@@ -40,15 +40,15 @@ const {
         {content && <div class="mb-12 text-lg dark:text-slate-400" set:html={content} />}
 
       </div>
-      <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
+      <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2 transition-transform duration-1000 ease-in hover:scale-105 hover:duration-[1s] group  overflow-hidden">
         {
           image && (
-            <div class="relative m-auto max-w-4xl group  overflow-hidden">
+            <div class="relative m-auto max-w-4xl ">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
                 <Image
-                class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700 transform transition-all duration-300 ease-in-out group-hover:rotate-1 group-hover:scale-110" 
+                class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700 transition-all duration-1000 group-hover:opacity-100 " 
                 widths={[400, 700]}
                 sizes="(max-width: 700px) 400px, 700px"
                 width={700}
