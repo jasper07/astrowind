@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Second Phase Solutions
+  site: 'https://secondphase.com.au'
   base: '/'
   trailingSlash: false
 

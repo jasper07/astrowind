@@ -1,16 +1,16 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
+import Hero from '~/components/widgets/Hero2.astro';
 import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Services from '~/components/widgets/Services.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -19,34 +19,76 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <!-- Hero Clouds ******************* -->
+  <script>
+    import * as THREE from 'vanta/vendor/three.r134.min.js';
+    import CLOUDS from 'vanta/src/vanta.clouds.js';
+
+    let vantaEffect;
+
+    const initVanta = () => {
+      if (vantaEffect) {
+        vantaEffect.destroy();
+      }
+
+      vantaEffect = CLOUDS({
+        el: '#main-hero',
+        THREE: THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0x3400ff,
+        skyColor: 0x293752,
+        cloudColor: 0x7486a0,
+        cloudShadowColor: 0x183550,
+        sunColor: 0xff9919,
+        sunGlareColor: 0xff6633,
+        sunlightColor: 0xff9933,
+        backgroundColor: 0x0,
+      });
+    };
+
+    // Initialize on first load
+    document.addEventListener('DOMContentLoaded', initVanta);
+
+    // Re-initialize on navigation
+    document.addEventListener('astro:after-swap', initVanta);
+
+    // Clean up when navigating away
+    document.addEventListener('astro:before-swap', () => {
+      if (vantaEffect) {
+        vantaEffect.destroy();
+      }
+    });
+  </script>
+
   <!-- Hero Widget ******************* -->
 
   <Hero
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
+        text: 'Contact Us',
         href: 'https://github.com/onwidget/astrowind',
         target: '_blank',
         icon: 'tabler:download',
       },
-      { text: 'Learn more', href: '#features' },
+      { text: 'Services', href: '#features' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+     image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 4.0</span> + Tailwind CSS
+      The SAP BTP Cloud <span class="hidden xl:inline">Sherpas</span>
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 4.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+        <b>We Handle the Heavy Lifting on Your Journey to the Cloud.</b>
+      </span>
     </Fragment>
   </Hero>
 
@@ -56,163 +98,339 @@ const metadata = {
 
   <!-- Features Widget *************** -->
 
-  <Features
+  <Features2
     id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
+    tagline="Your Guides"
+    title="Navigating Challenges Together"
+    subtitle="We can help shave the hairy yaks, keep you moving forward, and ensure you’re on the right path. "
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'SAP Technology Problem-Solvers',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'We simplify SAP technology adoption by helping businesses overcome obstacles that often lead to technical debt. We quickly identify core issues and implement effective solutions, allowing your team to focus on their priorities and deliver business value. This leads to easier-to-support systems, improved productivity, and an efficient SAP cloud platform aligned with your business goals.',
+        icon: 'flat-color-icons:approval',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'Collaborative Knowledge Transfer',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          "As player-coaches, we work alongside your team, sharing our expertise in managing diverse, disparate environments. We meet you where you are, navigating the intricacies of your technology landscape.  Our aim is to equip your team with the skills needed to effectively manage and optimize your technology platform. This ensures you're better prepared for future challenges in your evolving business environment.",
+        icon: 'flat-color-icons:collaboration',
       },
       {
-        title: 'Best Practices',
+        title: 'Flexible, On-Demand Support',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          'We provide access to senior technical expertise through adaptable engagement models. We offer principal, lead, and architect-level support in cloud technologies, software development, and SAP systems. This approach delivers cost-effective, specialized knowledge for critical decisions and complex problem-solving, ensuring you have the right expertise when needed, without the overhead of full-time hires.',
+        icon: 'flat-color-icons:todo-list',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  <!-- Services Widget **************** -->
 
-  <Content
+  <Services
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: 'Built on top of Astro 4.0',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
-      },
-      {
-        title: 'Styled using Tailwind CSS',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
-      },
-      {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
+    tagline="Services"
+    title="From Day 0 to Day 2 and Beyond."
+    subtitle="Let’s get you headed in the right direction."
+    items={[]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      src: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       alt: 'Colorful Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h2 class="text-xl font-bold">SAP Platform Migration</h2>
+      <p class="text-muted mt-2">
+        Migrating complex SAP processes from legacy platforms to modern cloud solutions presents significant challenges.
+        We have successfully assisted large enterprises in transitioning their SAP On-premise and NEO workloads to the
+        Business Technology Platform and Cloud Foundry. Our detailed approach begins with in-depth technical analysis,
+        followed by a tailored migration strategy. We guide the entire process, emphasizing knowledge transfer and
+        change management to ensure minimal disruption and optimized performance in your new cloud environment.
+      </p>
     </Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content>
+  </Services>
 
-  <!-- Content Widget **************** -->
+  <!-- Services Widget **************** -->
 
-  <Content
+  <Services
     isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
+    items={[]}
     image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
+      src: 'https://images.unsplash.com/photo-1541960071727-c531398e7494?q=80&w=2448&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       alt: 'Blueprint Image',
     }}
   >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+    <Fragment slot="content">
+      <h2 class="text-xl font-bold">Clean Core BTP Strategy</h2>
+      <p class="text-muted mt-2">
+        Long-term SAP customers face inertia and enormous technical debt from heavily customized systems. With ECC
+        support ending in 2027, many feel forced to rush migration without addressing these issues. We have assisted
+        large organizations in breaking this cycle through a detailed assessment of custom developments and integrations
+        in their SAP systems. Our approach provides insights to prioritize customizations for standardization,
+        retirement, or gradual migration to SAP BTP using ABAP Cloud. This enables a measured strategy that balances
+        migration urgency with debt reduction, maximizing S/4HANA Cloud's benefits while aligning with your
+        organization’s digital transformation goals.
+      </p>
+    </Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content>
+  </Services>
 
-  <!-- Content Widget **************** -->
+  <!-- Services Widget **************** -->
 
-  <Content
+  <Services
     isReversed
     isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
+    items={[]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1560092057-552a70533807?q=80&w=2672&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Astronauts Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-xl font-bold">Legacy Application Modernization</h2>
+      <p class="text-muted mt-2">
+        You have large legacy SAP applications which need modernizing. Our team has worked with complex,
+        custom-developed systems that no longer meet evolving business needs. We begin with comprehensive analysis of
+        all existing systems and custom code. Based on this, we determine the best modernization strategy - whether it's
+        rehosting, refactoring, leveraging new cloud services, or rebuilding. We then guide you through the chosen
+        modernization path, ensuring knowledge transfer and minimizing business disruption while optimizing for future
+        scalability and performance.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-white dark:bg-transparent"></div>
+    </Fragment>
+  </Services>
+
+  <Services
+    isAfterContent
+    items={[]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1667372335962-5fd503a8ae5b?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Blueprint Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-xl font-bold">DevOps Adoption</h2>
+      <p class="text-muted mt-2">
+        SAP teams often struggle with outdated practices, hindering their ability to fully leverage cloud benefits. We
+        have successfully helped large organizations align their SAP operations with modern DevOps principles, enhancing
+        automation, integration, and collaboration. Our approach streamlines development practices while maintaining
+        robust governance and security. This enables faster, higher-quality code and more reliable deployments,
+        ultimately reducing risks and improving ROI. By balancing agility with necessary controls, we ensure code
+        readiness for frequent releases, all while preserving essential CAB and RAB processes for production deployment.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-white dark:bg-transparent"></div>
+    </Fragment>
+  </Services>
+
+  <!-- Services Widget **************** -->
+
+  <Services
+    isReversed
+    isAfterContent
+    items={[]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1486983493968-6550b6afbe96?q=80&w=2598&auto=formatfit=crop&w=768&q=80&h=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Astronauts Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-xl font-bold">BTP Multitenant Product Development</h2>
+      <p class="text-muted mt-2">
+        Many Independent Software Vendors (ISVs) are building scalable products on BTP to modernize their solutions and
+        leverage SAP's ecosystem. However, they often face challenges with SAP-specific technologies, multitenant
+        architectures, and service integration. This can lead to inefficient BTP usage and missed opportunities. We
+        guide ISVs in developing multitenant applications, offering expertise in SAP Cloud Application Programming (CAP)
+        and BTP service integration. Our hands-on approach includes knowledge transfer and practical strategies for
+        secure tenant separation and effective resource optimization.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Services>
+
+  <!-- Services Widget **************** -->
+
+  <Services
+    isAfterContent
+    items={[]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1611760411635-d177d86ac2ba?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-xl font-bold">Application Performance Optimization</h2>
+      <p class="text-muted mt-2">
+        Post-go-live performance issues often arise in SAP systems when non-functional requirements are overlooked
+        during implementation. We address this by implementing observability using logs, traces, and metrics to identify
+        inefficiencies. This proactive approach, combined with performance testing tools, allows teams to anticipate
+        issues, set up alerts, and gain system transparency. By analyzing observability data and load test results, we
+        identify bottlenecks and teach teams to recognize these issues. This data-driven strategy empowers teams to
+        optimize queries, streamline code, and balance resources, enhancing response times and user experience while
+        aligning with organizational goals cost-effectively..
+      </p>
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Services>
+
+  <!-- Services Widget **************** -->
+
+  <Services
+    isReversed
+    isAfterContent
+    items={[]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1493129922668-fcb1a8514643?q=80&w=2450&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Blueprint Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-xl font-bold">Security and Compliance Readiness</h2>
+      <p class="text-muted mt-2">
+        BTP environments are often set up quickly, with organizations leveraging free credits gung ho without
+        prioritizing security, leading to vulnerabilities. Our reviews frequently uncover security issues in these
+        systems. We provide assessments of custom code, configurations, and access controls, delivering detailed reports
+        that outline your security posture and highlight areas needing attention. We equip you with practical tools,
+        knowledge, runbooks, and automation for immediate remediation and ongoing security management. This approach
+        enables alignment with your enterprise security strategies and DevSecOps practices, ensuring security
+        integration throughout your development lifecycle.
+      </p>
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-white dark:bg-transparent"></div>
+    </Fragment>
+  </Services>
+
+  <!-- Services Widget **************** -->
+  <Services
+    isAfterContent
+    items={[]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1534621107955-b06bbc17b043?q=80&w=2667&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Astronauts Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-xl font-bold">Technical Rescue</h2>
+      <p class="text-muted mt-2">
+        Teams supporting applications or using new technologies often face blocked systems and outdated practices that
+        hinder business operations. We step in when these teams are stuck, providing fresh perspectives and years of
+        problem-solving experience. Our technical assessments identify immediate fixes and long-term improvements to
+        restore operations and enhance efficiency. This proactive approach helps teams shift from constant firefighting
+        to streamlined application support, aligning with organizational goals and delivering business value.
+      </p>
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-white dark:bg-transparent"></div>
+    </Fragment>
+  </Services>
+  <!-- Services Widget **************** -->
+
+  <Services
+    isReversed
+    isAfterContent
+    items={[]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'Blueprint Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-xl font-bold">Consulting Partner Oversight</h2>
+      <p class="text-muted mt-2">
+        Many organizations find consulting partners often underdeliver, using bait-and-switch tactics or delivering
+        solutions only they can support. These issues stem from consultants' inexperience with technology, leading to
+        shortcuts and compromises. As a result, projects veer off track, lose sight of key objectives, and fail to
+        deliver expected value. We provide expert oversight on consulting engagements, ensuring efforts meet intended
+        goals. Our approach uses industry best practices, offering early and frequent feedback to prevent 'watermelon'
+        reporting. This helps deliver successful outcomes aligned with organizational objectives, avoiding common
+        pitfalls in technology-driven projects.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Services>
+  <!-- Services Widget **************** -->
+
+  <Services
+    isAfterContent
+    items={[]}
     image={{
       src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       alt: 'Astronauts Image',
     }}
   >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
+    <Fragment slot="content">
+      <h2 class="text-xl font-bold">Team Recruitment</h2>
+      <p class="text-muted mt-2">
+        Assembling the right team is crucial for achieving BTP business case objectives. Hiring the wrong team wastes
+        time and money. Often, managers focus on perceived skills gaps rather than actual needs, leading to misaligned
+        hires. We improve job descriptions and assist with interviews, asking questions to identify the right problem
+        solvers for each role. Our method considers skills, team fit, and growth potential. This ensures your team
+        delivers maximum value and effectively meets BTP objectives, avoiding costly hiring mistakes and aligning with
+        your business goals.
+      </p>
+    </Fragment>
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content>
+  </Services>
+  
+  <!-- Testimonials Widget ****************** -->
+  <Testimonials
+    title="Words from real customers"
+    testimonials={[
+      {
+        testimonial: `It felt inspiring to watch you cut with ease through complexity, really enjoyed working with you.`,
+        name: 'Enterprise Architect',
+        job: 'Fortune 500 Company',
+      },
+      {
+        testimonial: `I'm not sure if you have any idea how much you've helped the team. I've definitely learned a lot from you even from the limited time we've worked together.`,
+        name: 'Product Owner',
+        job: 'Technology Firm',
+      },
+      {
+        testimonial: `Without your team's input and knowledge, we would not be on the road to improvement.`,
+        name: 'Business Solution Owner',
+        job: 'Global Enterprise',
+      },
+      {
+        testimonial: `I really appreciated the way you always gave us the realities of what we are doing and where we headed, good bad or indifferent.`,
+        name: 'Product Owner',
+        job: 'SAP-Centric Organization',
+      },
+      {
+        testimonial: `You really helped us through a very tough time. True leaders always share the knowledge and are willing to help.`,
+        name: 'Software Developer',
+        job: 'Large-Scale SAP Implementation',
+      },
+      {
+        testimonial: `Nothing was too much trouble, and the scrum teams had positive interactions, always complimenting the leadership and expertise. Second Phase is an asset to any technical build or team requiring strategic direction.`,
+        name: 'Scrum Master',
+        job: 'Complex SAP BTP Landscape',
+      },
+    ]}
+  />
 
   <!-- Steps Widget ****************** -->
 
