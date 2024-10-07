@@ -11,9 +11,10 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Services from '~/components/widgets/Services.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'The BTP Cloud Sherpas - let us do the heavy lifting',
   ignoreTitleTemplate: true,
 };
 ---
@@ -26,31 +27,41 @@ const metadata = {
 
     let vantaEffect;
 
-    const initVanta = () => {
-      if (vantaEffect) {
-        vantaEffect.destroy();
-      }
 
-      vantaEffect = CLOUDS({
-        el: '#main-hero',
-        THREE: THREE,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.0,
-        minWidth: 200.0,
-        scale: 1.0,
-        scaleMobile: 1.0,
-        color: 0x3400ff,
-        skyColor: 0x293752,
-        cloudColor: 0x7486a0,
-        cloudShadowColor: 0x183550,
-        sunColor: 0xff9919,
-        sunGlareColor: 0xff6633,
-        sunlightColor: 0xff9933,
-        backgroundColor: 0x0,
-      });
-    };
+const initVanta = () => {
+  return;
+  if (vantaEffect) {
+    vantaEffect.destroy();
+  }
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  vantaEffect = CLOUDS({
+    el: '#main-hero',
+    THREE: THREE,
+    mouseControls: false,
+    touchControls: false,
+    gyroControls: false,
+    minHeight: 100.0,
+    minWidth: 100.0,
+    scale: isMobile ? 0.75 : 1.0,
+    scaleMobile: 0.75,
+    color: 0x3400ff,
+    skyColor: 0x293752,
+    cloudColor: 0x7486a0,
+    cloudShadowColor: 0x183550,
+    sunColor: 0xff9919,
+    sunGlareColor: 0xff6633,
+    sunlightColor: 0xff9933,
+    backgroundColor: 0x0,
+    speed: 0.5,
+    zoom: 0.8,
+    frameInterval: 24,
+    cloudWidth: 4,
+    cloudHeight: 1.5,
+    cloudDepth: 1.5,
+  });
+}
 
     // Growing text effect
     const observer = new IntersectionObserver(
@@ -81,7 +92,10 @@ const metadata = {
     });
 
     // Re-initialize on navigation
-    document.addEventListener('astro:after-swap', initVanta);
+    document.addEventListener('astro:after-swap', () => {
+      initVanta();
+      initGrowingText();
+    });
 
     // Clean up when navigating away
     document.addEventListener('astro:before-swap', () => {
@@ -98,11 +112,10 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Contact Us',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
+        href: '#contact',
         icon: 'tabler:message',
       },
-      { text: 'Services', href: '#features' },
+      { text: 'Services', href: '#services' },
     ]}
     image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
   >
@@ -153,6 +166,7 @@ const metadata = {
   <!-- Services Widget **************** -->
 
   <Services
+    id="services"
     isReversed
     tagline="Services"
     title="From Day 0 to Day 2 and Beyond."
@@ -182,7 +196,7 @@ const metadata = {
   <!-- Services Widget **************** -->
 
   <Services
-  isAfterContent
+    id="CleanCoreBTPStrategy"
     items={[]}
     image={{
       src: 'https://images.unsplash.com/photo-1541960071727-c531398e7494?q=80&w=2448&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -210,6 +224,7 @@ const metadata = {
   <!-- Services Widget **************** -->
 
   <Services
+    id="LegacyApplicationModernization"
     isReversed
     items={[]}
     image={{
@@ -235,6 +250,7 @@ const metadata = {
   </Services>
 
   <Services
+    id="DevOpsAdoption"
     isAfterContent
     items={[]}
     image={{
@@ -262,6 +278,7 @@ const metadata = {
   <!-- Services Widget **************** -->
 
   <Services
+    id="BTPMultitenantProductDevelopment"
     isReversed
     items={[]}
     image={{
@@ -289,6 +306,7 @@ const metadata = {
   <!-- Services Widget **************** -->
 
   <Services
+    id="ApplicationPerformanceOptimization"
     isAfterContent
     items={[]}
     image={{
@@ -316,6 +334,7 @@ const metadata = {
   <!-- Services Widget **************** -->
 
   <Services
+    id="SecurityandComplianceReadiness"
     isReversed
     items={[]}
     image={{
@@ -342,6 +361,7 @@ const metadata = {
 
   <!-- Services Widget **************** -->
   <Services
+    id="TechnicalRescue"
     isAfterContent
     items={[]}
     image={{
@@ -366,6 +386,7 @@ const metadata = {
   <!-- Services Widget **************** -->
 
   <Services
+    id="ConsultingPartnerOversight"
     isReversed
     items={[]}
     image={{
@@ -393,6 +414,7 @@ const metadata = {
   <!-- Services Widget **************** -->
 
   <Services
+    id="TeamRecruitment"
     isAfterContent
     items={[]}
     image={{
@@ -561,78 +583,30 @@ const metadata = {
                 `}
   />
 
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
+  <!-- Contact Widget ******** -->
+  <ContactUs
+    id="contact"
+    title="Drop us a message today!"
+    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    inputs={[
       {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+        type: 'text',
+        name: 'name',
+        label: 'Name',
       },
       {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+        type: 'email',
+        name: 'email',
+        label: 'Email',
       },
     ]}
+    textarea={{
+      label: 'Message',
+    }}
+    disclaimer={{
+      label:
+        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="Our support team typically responds within 24 business hours."
   />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
 </Layout>

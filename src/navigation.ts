@@ -3,23 +3,47 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Homes',
+      text: 'Services',
       links: [
         {
-          text: 'SaaS',
-          href: getPermalink('/homes/saas'),
+          text: 'SAP Platform Migration',
+          href: getPermalink('/#SAPPlatformMigration'),
         },
         {
-          text: 'Startup',
-          href: getPermalink('/homes/startup'),
+          text: 'Clean Core BTP Strategy',
+          href: getPermalink('/#CleanCoreBTPStrategy'),
         },
         {
-          text: 'Mobile App',
-          href: getPermalink('/homes/mobile-app'),
+          text: 'Legacy Application Modernization',
+          href: getPermalink('/#LegacyApplicationModernization'),
         },
         {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
+          text: 'DevOps Adoption',
+          href: getPermalink('/#DevOpsAdoption'),
+        },
+        {
+          text: 'BTP Multitenant Product Development',
+          href: getPermalink('/#BTPMultitenantProductDevelopment'),
+        },
+        {
+          text: 'Application Performance Optimization',
+          href: getPermalink('/#ApplicationPerformanceOptimization'),
+        },
+        {
+          text: 'Security and Compliance Readiness',
+          href: getPermalink('/#SecurityandComplianceReadiness'),
+        },
+        {
+          text: 'Technical Rescue',
+          href: getPermalink('/#TechnicalRescue'),
+        },
+        {
+          text: 'Consulting Partner Oversight',
+          href: getPermalink('/#ConsultingPartnerOversight'),
+        },
+        {
+          text: 'Team Recruitment',
+          href: getPermalink('/#TeamRecruitment'),
         },
       ],
     },
@@ -27,33 +51,21 @@ export const headerData = {
       text: 'Pages',
       links: [
         {
-          text: 'Features (Anchor Link)',
+          text: 'Features',
           href: getPermalink('/#features'),
         },
         {
           text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
+          href: getPermalink('/#services'),
         },
         {
           text: 'About us',
-          href: getPermalink('/about'),
+          href: getPermalink('/#about'),
         },
         {
           text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
+          href: getPermalink('/#contact'),
+        }
       ],
     },
     {
