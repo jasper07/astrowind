@@ -4,6 +4,7 @@ export const headerData = {
   links: [
     {
       text: 'Services',
+      href: getPermalink('/#services'),
       links: [
         {
           text: 'SAP Platform Migration',
