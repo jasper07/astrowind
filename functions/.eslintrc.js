@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    es2022: true,
+    es6: true,
     node: true,
   },
   parserOptions: {
@@ -15,12 +15,6 @@ module.exports = {
     "no-restricted-globals": ["error", "name", "length"],
     "prefer-arrow-callback": "error",
     "quotes": ["error", "double", {"allowTemplateLiterals": true}],
-    "object-curly-spacing": ["error", "always"],
-    "max-len": ["error", { "code": 100 }],
-    "require-jsdoc": "off",
-    // Disable the rule that forbids require() imports
-    "@typescript-eslint/no-require-imports": "off", // This line can be removed since you're not using TypeScript
-    "import/no-commonjs": "off", // Disable rule that forbids CommonJS
   },
   overrides: [
     {
