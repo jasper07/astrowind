@@ -25,22 +25,6 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
             </h2>
           </div>
           <div class="mb-12 flex flex-wrap justify-between lg:mb-0">
-            <!-- <div class="mb-8 flex w-[330px] max-w-full">
-              <div class="mr-6 text-[32px] text-primary">
-                <svg width="29" height="35" viewBox="0 0 29 35" class="fill-current">
-                  <path
-                    d="M14.5 0.710938C6.89844 0.710938 0.664062 6.72656 0.664062 14.0547C0.664062 19.9062 9.03125 29.5859 12.6406 33.5234C13.1328 34.0703 13.7891 34.3437 14.5 34.3437C15.2109 34.3437 15.8672 34.0703 16.3594 33.5234C19.9688 29.6406 28.3359 19.9062 28.3359 14.0547C28.3359 6.67188 22.1016 0.710938 14.5 0.710938ZM14.9375 32.2109C14.6641 32.4844 14.2812 32.4844 14.0625 32.2109C11.3828 29.3125 2.57812 19.3594 2.57812 14.0547C2.57812 7.71094 7.9375 2.625 14.5 2.625C21.0625 2.625 26.4219 7.76562 26.4219 14.0547C26.4219 19.3594 17.6172 29.2578 14.9375 32.2109Z" />
-                  <path
-                    d="M14.5 8.58594C11.2734 8.58594 8.59375 11.2109 8.59375 14.4922C8.59375 17.7188 11.2187 20.3984 14.5 20.3984C17.7812 20.3984 20.4062 17.7734 20.4062 14.4922C20.4062 11.2109 17.7266 8.58594 14.5 8.58594ZM14.5 18.4297C12.3125 18.4297 10.5078 16.625 10.5078 14.4375C10.5078 12.25 12.3125 10.4453 14.5 10.4453C16.6875 10.4453 18.4922 12.25 18.4922 14.4375C18.4922 16.625 16.6875 18.4297 14.5 18.4297Z" />
-                </svg>
-              </div>
-              <div>
-                <h5 class="mb-[18px] text-lg font-semibold text-dark dark:text-white">Our Location</h5>
-                <p class="text-base text-body-color dark:text-dark-6">
-                  401 Broadway, 24th Floor, Orchard Cloud View, London
-                </p>
-              </div>
-            </div> -->
             <div class="mb-8 flex w-[330px] max-w-full">
               <div class="mr-6 text-[32px] text-primary">
                 <svg width="34" height="25" viewBox="0 0 34 25" class="fill-current">
@@ -51,8 +35,20 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
               </div>
               <div>
                 <h5 class="mb-[18px] text-lg font-semibold text-dark dark:text-white">How Can We Help?</h5>
-                <p class="text-base text-body-color dark:text-dark-6">info@yourdomain.com</p>
-                <p class="text-base text-body-color dark:text-dark-6 mt-1">contact@yourdomain.com</p>
+                <p class="text-base text-body-color dark:text-dark-6">
+                  <p class="text-base text-body-color dark:text-dark-6">
+                    <span class="email">
+                      <span class="name">info</span><span class="at">@</span><span class="domain">secondphase.com.au</span>
+                    </span>
+                  </p>
+                </p>
+                <p class="text-base text-body-color dark:text-dark-6">
+                  <p class="text-base text-body-color dark:text-dark-6">
+                    <span class="email">
+                      <span class="name">contact</span><span class="at">@</span><span class="domain">secondphase.com.au</span>
+                    </span>
+                  </p>
+                </p>
               </div>
             </div>
           </div>
@@ -65,13 +61,13 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
           <h3 class="mb-8 text-2xl font-semibold md:text-[28px] md:leading-[1.42] text-dark dark:text-white">
             Send us a Message
           </h3>
-          <form>
+          <form id="contactForm"> 
             <div class="mb-[22px]">
               <label for="fullName" class="block text-sm text-body-color dark:text-dark-6 mb-4">Full Name*</label>
               <input
                 type="text"
-                name="fullName"
-                placeholder="Adam Gelius"
+                name="name"
+                placeholder="enter your name"
                 class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none"
               />
             </div>
@@ -80,16 +76,16 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
               <input
                 type="email"
                 name="email"
-                placeholder="example@yourmail.com"
+                placeholder="enter@yourmail.com"
                 class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none"
               />
             </div>
             <div class="mb-[22px]">
-              <label for="phone" class="block text-sm text-body-color dark:text-dark-6 mb-4">Phone*</label>
+              <label for="company" class="block text-sm text-body-color dark:text-dark-6 mb-4">Company Name*</label>
               <input
                 type="text"
-                name="phone"
-                placeholder="+885 1254 5211 552"
+                name="company"
+                placeholder="enter company"
                 class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none"
               />
             </div>
@@ -97,8 +93,8 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
               <label for="message" class="block text-sm text-body-color dark:text-dark-6 mb-4">Message*</label>
               <textarea
                 name="message"
-                rows="1"
-                placeholder="type your message here"
+                rows="3"
+                placeholder="write a short description"
                 class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 resize-none border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none"
               ></textarea>
             </div>
@@ -118,3 +114,38 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
   <!-- </section> -->
 </WidgetWrapper>
 <!-- ====== Contact End ====== -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          const response = await fetch('http://localhost:5001/secondphase-b73a4/us-central1/submitContactForm', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ data: data }),
+          });
+
+          if (response.ok) {
+            alert('Message sent successfully!');
+            form.reset();
+          } else {
+            throw new Error('Failed to send message');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('Failed to send message. Please try again later.');
+        }
+      });
+    } else {
+      console.error('Contact form not found in the DOM');
+    }
+  });
+</script>
