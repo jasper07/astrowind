@@ -15,8 +15,8 @@ const {
 } = Astro.props;
 ---
 
-<section  class="relative md:-mt-[100px] -mt-[90px] not-prose" id="main-hero">
-  <div   class="absolute inset-0 pointer-events-none" aria-hidden="true">
+<section class="relative md:-mt-[100px] -mt-[90px] not-prose" id="main-hero">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>

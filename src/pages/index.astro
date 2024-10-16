@@ -24,41 +24,40 @@ const metadata = {
 
     let vantaEffect;
 
+    const initVanta = () => {
+      return;
+      if (vantaEffect) {
+        vantaEffect.destroy();
+      }
 
-const initVanta = () => {
-  return;
-  if (vantaEffect) {
-    vantaEffect.destroy();
-  }
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-  vantaEffect = CLOUDS({
-    el: '#main-hero',
-    THREE: THREE,
-    mouseControls: false,
-    touchControls: false,
-    gyroControls: false,
-    minHeight: 100.0,
-    minWidth: 100.0,
-    scale: isMobile ? 0.75 : 1.0,
-    scaleMobile: 0.75,
-    color: 0x3400ff,
-    skyColor: 0x293752,
-    cloudColor: 0x7486a0,
-    cloudShadowColor: 0x183550,
-    sunColor: 0xff9919,
-    sunGlareColor: 0xff6633,
-    sunlightColor: 0xff9933,
-    backgroundColor: 0x0,
-    speed: 0.5,
-    zoom: 0.8,
-    frameInterval: 24,
-    cloudWidth: 4,
-    cloudHeight: 1.5,
-    cloudDepth: 1.5,
-  });
-}
+      vantaEffect = CLOUDS({
+        el: '#main-hero',
+        THREE: THREE,
+        mouseControls: false,
+        touchControls: false,
+        gyroControls: false,
+        minHeight: 100.0,
+        minWidth: 100.0,
+        scale: isMobile ? 0.75 : 1.0,
+        scaleMobile: 0.75,
+        color: 0x3400ff,
+        skyColor: 0x293752,
+        cloudColor: 0x7486a0,
+        cloudShadowColor: 0x183550,
+        sunColor: 0xff9919,
+        sunGlareColor: 0xff6633,
+        sunlightColor: 0xff9933,
+        backgroundColor: 0x0,
+        speed: 0.5,
+        zoom: 0.8,
+        frameInterval: 24,
+        cloudWidth: 4,
+        cloudHeight: 1.5,
+        cloudDepth: 1.5,
+      });
+    };
 
     // Growing text effect
     const observer = new IntersectionObserver(

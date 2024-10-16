@@ -50,11 +50,11 @@ export const headerData = {
     },
     {
       text: 'About',
-      href: getPermalink('/#about')
+      href: getPermalink('/#about'),
     },
     {
       text: 'Contact',
-      href: getPermalink('/#contact')
+      href: getPermalink('/#contact'),
     },
     {
       text: 'Blog',
@@ -80,7 +80,7 @@ export const headerData = {
           href: getPermalink('astro', 'tag'),
         },
       ],
-    }
+    },
   ],
   actions: [],
 };

@@ -26,15 +26,17 @@ const {
   containerClass={`max-w-6xl mx-auto ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${classes?.container ?? ''} !pb-4 !md:pb-6 !lg:pb-8`}
   bg={bg}
 >
-<Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
+  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
 
   <div class="mx-auto max-w-7xl p-4 md:px-8">
     <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
       <div class="md:basis-1/2 self-center">
         {content && <div class="mb-12 text-lg dark:text-slate-400" set:html={content} />}
-
       </div>
-      <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2 transition-transform duration-1000 ease-in hover:scale-105 hover:duration-[1s] group  overflow-hidden">
+      <div
+        aria-hidden="true"
+        class="mt-10 md:mt-0 md:basis-1/2 transition-transform duration-1000 ease-in hover:scale-105 hover:duration-[1s] group overflow-hidden"
+      >
         {
           image && (
             <div class="relative m-auto max-w-4xl ">
@@ -42,15 +44,15 @@ const {
                 <Fragment set:html={image} />
               ) : (
                 <Image
-                class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700 transition-all duration-1000 group-hover:opacity-100 " 
-                widths={[400, 700]}
-                sizes="(max-width: 700px) 400px, 700px"
-                width={700}
-                height={500}
-                loading="eager"
-                decoding="async"
-                layout="responsive"
-               {...image}
+                  class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700 transition-all duration-1000 group-hover:opacity-100 "
+                  widths={[400, 700]}
+                  sizes="(max-width: 700px) 400px, 700px"
+                  width={700}
+                  height={500}
+                  loading="eager"
+                  decoding="async"
+                  layout="responsive"
+                  {...image}
                 />
               )}
             </div>
