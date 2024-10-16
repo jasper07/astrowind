@@ -38,14 +38,18 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
                 <p class="text-base text-body-color dark:text-dark-6">
                   <p class="text-base text-body-color dark:text-dark-6">
                     <span class="email">
-                      <span class="name">info</span><span class="at">@</span><span class="domain">secondphase.com.au</span>
+                      <span class="name">info</span><span class="at">@</span><span class="domain"
+                        >secondphase.com.au</span
+                      >
                     </span>
                   </p>
                 </p>
                 <p class="text-base text-body-color dark:text-dark-6">
                   <p class="text-base text-body-color dark:text-dark-6">
                     <span class="email">
-                      <span class="name">contact</span><span class="at">@</span><span class="domain">secondphase.com.au</span>
+                      <span class="name">contact</span><span class="at">@</span><span class="domain"
+                        >secondphase.com.au</span
+                      >
                     </span>
                   </p>
                 </p>
@@ -61,7 +65,7 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
           <h3 class="mb-8 text-2xl font-semibold md:text-[28px] md:leading-[1.42] text-dark dark:text-white">
             Send us a Message
           </h3>
-          <form id="contactForm"> 
+          <form id="contactForm">
             <div class="mb-[22px]">
               <label for="fullName" class="block text-sm text-body-color dark:text-dark-6 mb-4">Full Name*</label>
               <input
@@ -120,12 +124,16 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
     if (form) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
+        const isLocalDevelopment = window.location.hostname === 'localhost' && window.location.port === '4321';
+        const baseUrl = isLocalDevelopment ? 'http://localhost:5001/secondphase-b73a4/us-central1' : '';
+        const functionUrl = `${baseUrl}/submitContactForm`;
+
         try {
-          const response = await fetch('http://localhost:5001/secondphase-b73a4/us-central1/submitContactForm', {
+          const response = await fetch(functionUrl, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
