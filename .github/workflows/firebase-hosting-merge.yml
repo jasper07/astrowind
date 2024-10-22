@@ -13,7 +13,6 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm install 
       - run: npm install sharp
-      - name: Install Linux version of Lightning CSS
       - run: npm install lightningcss@latest --platform=linux --arch=x64
       - run: npm run build
       - run: cd functions && npm ci && cd ..
