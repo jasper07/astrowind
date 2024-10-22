@@ -42,7 +42,7 @@ export default defineConfig({
           'currency-exchange',
           'voice-presentation',
           'business-contact',
-          'database',
+          'database',      
           'collaboration',
           'todo-list',
         ],

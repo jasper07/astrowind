@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero2.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
@@ -59,38 +59,14 @@ const metadata = {
       });
     };
 
-    // Growing text effect
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          } else {
-            entry.target.classList.remove('visible');
-          }
-        });
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-      }
-    );
-
-    const initGrowingText = () => {
-      document.querySelectorAll('.grow-text').forEach((el) => {
-        observer.observe(el);
-      });
-    };
-
     // Initialize both effects on first load
     document.addEventListener('DOMContentLoaded', () => {
       initVanta();
-      initGrowingText();
     });
 
     // Re-initialize on navigation
     document.addEventListener('astro:after-swap', () => {
       initVanta();
-      initGrowingText();
     });
 
     // Clean up when navigating away
@@ -103,7 +79,8 @@ const metadata = {
 
   <!-- Hero Widget ******************* -->
 
-  <Hero
+
+  <Hero2
     actions={[
       {
         variant: 'primary',
@@ -116,15 +93,14 @@ const metadata = {
     image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      The SAP BTP Cloud <span class="hidden xl:inline">Sherpas</span>
+      <span class="text-accent dark:text-white highlight"> The SAP BTP Cloud </span> <br /> Sherpas
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <b>We Handle the Heavy Lifting on Your Journey to the Cloud.</b>
-      </span>
+        We Handle the Heavy Lifting on Your Journey to the Cloud.
+ 
     </Fragment>
-  </Hero>
+  </Hero2>
 
   <!-- Note Widget ******************* -->
 
