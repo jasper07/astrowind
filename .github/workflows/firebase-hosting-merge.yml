@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - run: npm ci 
+      - run: npm install sharp
+      - run: npm npm run build
       - run: cd functions && npm ci && cd ..
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
