@@ -5,21 +5,35 @@ import Hero2 from '~/components/widgets/Hero2.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+//import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import Services from '~/components/widgets/Services.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import ContactUs from '~/components/widgets/Contact2.astro';
 
 const metadata = {
-  title: 'The BTP Cloud Sherpas - let us do the heavy lifting',
+  title: 'Expert SAP BTP Solutions | The BTP Cloud Sherpas',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Second Phase Solutions",
+      "url": "https://secondphase.com.au",
+      "logo": "https://secondphase.com.au/_astro/default.Cx75yUzL_vvg51.jpg",
+      "description": "We specialize in resolving SAP BTP challenges to optimize costs, improve performance, and streamline systems.",
+      "sameAs": [
+        "https://www.linkedin.com/in/johnspatterson/",
+        "https://twitter.com/jasper_07"
+      ],
+      "additionalType": "WebSite",
+      "@id": "https://secondphase.com.au/#services"
+    }
+    </script>
   <!-- Hero Widget ******************* -->
-
   <Hero2
     actions={[
       {
