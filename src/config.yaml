@@ -9,8 +9,8 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: SeccondPhase
-    template: '%s — AstroWind'
+    default: Seccond Phase Solutions
+    template: '%s — Second Phase Solutions'
   description: "\U0001F680 As your trusted Sherpas on the SAP BTP journey, we guide you through challenges where others stumble. Let us help you reduce costs, improve performance, and streamline your systems for greater efficiency."
   robots:
     index: true
@@ -33,7 +33,7 @@ i18n:
 
 apps:
   blog:
-    isEnabled: false
+    isEnabled: true
     postsPerPage: 6
 
     post:
