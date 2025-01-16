@@ -60,31 +60,32 @@ export const headerData = {
       text: 'Talk To Us!',
       href: getPermalink('/#contact'),
     },
-    // {
-    //   text: 'Blog',
+    {
+      text: 'Blog',
+      href: getPermalink('/blog'),
     //   links: [
     //     {
     //       text: 'Blog List',
     //       href: getBlogPermalink(),
     //     },
-    //     {
-    //       text: 'Article',
-    //       href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-    //     },
-    //     {
-    //       text: 'Article (with MDX)',
-    //       href: getPermalink('markdown-elements-demo-post', 'post'),
-    //     },
-    //     {
-    //       text: 'Category Page',
-    //       href: getPermalink('tutorials', 'category'),
-    //     },
-    //     {
-    //       text: 'Tag Page',
-    //       href: getPermalink('astro', 'tag'),
-    //     },
+    // //     {
+    // //       text: 'Article',
+    // //       href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
+    // //     },
+    // //     {
+    // //       text: 'Article (with MDX)',
+    // //       href: getPermalink('markdown-elements-demo-post', 'post'),
+    // //     },
+    // //     {
+    // //       text: 'Category Page',
+    // //       href: getPermalink('tutorials', 'category'),
+    // //     },
+    // //     {
+    // //       text: 'Tag Page',
+    // //       href: getPermalink('astro', 'tag'),
+    // //     },
     //   ],
-    // },
+    },
   ],
   actions: [],
 };
@@ -126,8 +127,8 @@ export const footerData = {
     {
       title: 'Company',
       links: [
-        { text: 'About', href: '#about' },
-        // { text: 'Blog', href: '#' },
+        { text: 'About', href: '/#about' },
+         { text: 'Blog', href: '/blog' },
         // { text: 'Careers', href: '#' },
         // { text: 'Press', href: '#' },
         // { text: 'Inclusion', href: '#' },
