@@ -158,6 +158,13 @@ declare module 'astro:content' {
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
+"cap-devops-advanced-pipeline.md": {
+	id: "cap-devops-advanced-pipeline.md";
+  slug: "cap-devops-advanced-pipeline";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
 };
 "post.1": {
 "astrowind-template-in-depth.mdx": {
