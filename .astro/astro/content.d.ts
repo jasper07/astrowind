@@ -165,6 +165,13 @@ declare module 'astro:content' {
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
+"sap-open-source-journey-2024-analysis.md": {
+	id: "sap-open-source-journey-2024-analysis.md";
+  slug: "sap-open-source-journey-2024-analysis";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
 };
 "post.1": {
 "astrowind-template-in-depth.mdx": {
