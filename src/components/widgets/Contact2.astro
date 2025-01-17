@@ -108,48 +108,130 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
             </div>
           </form>
         </div>
+            <!-- Alert Container -->
+            <div id="alertContainer" class="hidden mb-4 pt-4"> <!-- Add pt-4 for padding-top -->
+              <div id="alert" role="alert" class="relative flex w-full p-3 text-sm text-white rounded-md">
+                <span id="alertMessage">This is an alert message.</span>
+                <button class="flex items-center justify-center transition-all w-8 h-8 rounded-md text-white hover:bg-white/10 active:bg-white/10 absolute top-1.5 right-1.5" type="button" onclick="closeAlert()">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
       </div>
     </div>
   </div>
+
+
+
+
   <!-- </section> -->
 </WidgetWrapper>
 <!-- ====== Contact End ====== -->
+
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  (() => {
     const form = document.getElementById('contactForm');
-    if (form) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    const submitButton = form.querySelector('button[type="submit"]');
+    const alertContainer = document.getElementById('alertContainer');
+    const alert = document.getElementById('alert');
+    const alertMessage = document.getElementById('alertMessage');
 
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
 
-        const isLocalDevelopment = window.location.hostname === 'localhost' && window.location.port === '4321';
-        const baseUrl = isLocalDevelopment ? 'http://localhost:5001/secondphase-b73a4/us-central1' : '';
-        const functionUrl = `${baseUrl}/submitContactForm`;
+  const handleSubmit = async (event) => {
+      event.preventDefault();
 
-        try {
-          const response = await fetch(functionUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ data: data }),
-          });
+      if (!validateForm()) {
+        showAlert('error', 'Please fill out all required fields.');
+        return;
+      }
 
-          if (response.ok) {
-            alert('Message sent successfully!');
-            form.reset();
-          } else {
-            throw new Error('Failed to send message');
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          alert('Failed to send message. Please try again later.');
+      await submitForm();
+    };
+
+    const validateForm = () => {
+      const inputs = form.querySelectorAll('input, textarea');
+      let allFilled = true;
+
+      inputs.forEach((input) => {
+        if (!input.value) {
+          allFilled = false;
+          input.classList.add('border-red-500'); // Highlight empty fields
+        } else {
+          input.classList.remove('border-red-500');
         }
       });
+
+      return allFilled;
+    };
+
+    const submitForm = async () => {
+      disableSubmitButton(true);
+      
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      const functionUrl = getFunctionUrl();
+
+      try {
+        const response = await fetch(functionUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data }),
+        });
+
+        if (response.ok) {
+          showAlert('success', 'Your message has been sent successfully!');
+          form.reset();
+        } else {
+          throw new Error('Failed to send message');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        showAlert('error', 'An error occurred while sending your message.');
+      } finally {
+        disableSubmitButton(false);
+      }
+    };
+
+    const getFunctionUrl = () => {
+      const isLocalDevelopment = window.location.hostname === 'localhost' && window.location.port === '4321';
+      const baseUrl = isLocalDevelopment ? 'http://localhost:5001/secondphase-b73a4/us-central1' : '';
+      return `${baseUrl}/submitContactForm`;
+    };
+
+    const disableSubmitButton = (disable) => {
+      submitButton.disabled = disable;
+      submitButton.textContent = disable ? 'Sending...' : 'Send';
+    };
+
+    const showAlert = (type, message) => {
+      alertMessage.textContent = message;
+      
+      // Set alert background color based on type
+      if (type === 'success') {
+        alert.classList.add('bg-green-600');
+        alert.classList.remove('bg-red-600');
+      } else if (type === 'error') {
+        alert.classList.add('bg-red-600');
+        alert.classList.remove('bg-green-600');
+      }
+
+      // Show the alert container
+      alertContainer.classList.remove('hidden');
+
+      // Optionally hide after a few seconds
+      setTimeout(closeAlert, 5000);
+    };
+
+    const closeAlert = () => {
+      alertContainer.classList.add('hidden');
+    };
+    if (form) {
+      form.addEventListener('submit', handleSubmit);
     } else {
       console.error('Contact form not found in the DOM');
     }
-  });
+
+  })();
 </script>
