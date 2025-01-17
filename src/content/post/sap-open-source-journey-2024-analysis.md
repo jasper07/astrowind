@@ -11,7 +11,8 @@ tags:
   - Open Source
   - Code Connect
 ---
-Originally published on [LinkedIn](SAP Open-Source Journey - Code Connect 2024 Analysis)
+Originally published on [LinkedIn](https://www.linkedin.com/pulse/sap-open-source-journey-code-connect-2024-analysis-john-patterson-ruvtc)
+
 _Disclaimer: This article reflects my personal views and experiences. It’s intended to foster dialogue and improvement in the SAP ecosystem._
 ## TL; DR
 SAP Code Connect (June 3-6, 2024), a grassroots developer conference, showcased three SAP technologies at different stages of open-source adoption:
