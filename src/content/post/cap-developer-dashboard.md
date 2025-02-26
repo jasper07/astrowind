@@ -11,7 +11,6 @@ tags:
   - BTP
 ---
 
-
 ## Introduction
 
 When developing CAP applications, we often use various tools to understand how the system behaves. The [CAP Developer Dashboard](https://cap.cloud.sap/docs/java/operating-applications/dashboard) meets this need by providing a single interface that brings together important information about services, events, and performance metrics. This setup makes it easier to monitor, trace, and debug applications, allowing developers to gain real-time insights without having to switch between different tools.

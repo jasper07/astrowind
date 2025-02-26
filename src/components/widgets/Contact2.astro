@@ -130,16 +130,19 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
 </WidgetWrapper>
 <!-- ====== Contact End ====== -->
 
-<script>
+<script is:inline>
   (() => {
-    const form = document.getElementById('contactForm');
-    const submitButton = form.querySelector('button[type="submit"]');
-    const alertContainer = document.getElementById('alertContainer');
-    const alert = document.getElementById('alert');
-    const alertMessage = document.getElementById('alertMessage');
+    let form, submitButton, alertContainer, alert, alertMessage;
 
+    const initializeFormElements = () => {
+      form = document.getElementById('contactForm');
+      submitButton = form.querySelector('button[type="submit"]');
+      alertContainer = document.getElementById('alertContainer');
+      alert = document.getElementById('alert');
+      alertMessage = document.getElementById('alertMessage');
+    };
 
-  const handleSubmit = async (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
 
       if (!validateForm()) {
@@ -157,7 +160,7 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
       inputs.forEach((input) => {
         if (!input.value) {
           allFilled = false;
-          input.classList.add('border-red-500'); // Highlight empty fields
+          input.classList.add('border-red-500');
         } else {
           input.classList.remove('border-red-500');
         }
@@ -208,7 +211,6 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
     const showAlert = (type, message) => {
       alertMessage.textContent = message;
       
-      // Set alert background color based on type
       if (type === 'success') {
         alert.classList.add('bg-green-600');
         alert.classList.remove('bg-red-600');
@@ -217,21 +219,32 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
         alert.classList.remove('bg-green-600');
       }
 
-      // Show the alert container
       alertContainer.classList.remove('hidden');
-
-      // Optionally hide after a few seconds
       setTimeout(closeAlert, 5000);
     };
 
     const closeAlert = () => {
       alertContainer.classList.add('hidden');
     };
-    if (form) {
-      form.addEventListener('submit', handleSubmit);
-    } else {
-      console.error('Contact form not found in the DOM');
-    }
+
+    const setupFormHandler = () => {
+      if (form) {
+        form.removeEventListener('submit', handleSubmit);
+        form.addEventListener('submit', handleSubmit);
+      } else {
+        console.error('Contact form not found in the DOM');
+      }
+    };
+
+    // Initialize on first load
+    initializeFormElements();
+    setupFormHandler();
+
+    // Re-initialize on each Astro page load
+    document.addEventListener('astro:page-load', () => {
+      initializeFormElements();
+      setupFormHandler();
+    });
 
   })();
 </script>

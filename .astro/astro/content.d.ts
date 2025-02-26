@@ -151,6 +151,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"post": {
+"Learning Systems Thinking - Review.md": {
+	id: "Learning Systems Thinking - Review.md";
+  slug: "learning-systems-thinking---review";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
 "cap-developer-dashboard.md": {
 	id: "cap-developer-dashboard.md";
   slug: "cap-developer-dashboard";
@@ -181,48 +188,6 @@ declare module 'astro:content' {
   collection: "post.1";
   data: any
 } & { render(): Render[".mdx"] };
-"best-practices-for-cap.md": {
-	id: "best-practices-for-cap.md";
-  slug: "best-practices-for-cap";
-  body: string;
-  collection: "post.1";
-  data: any
-} & { render(): Render[".md"] };
-"get-started-website-with-astro-tailwind-css.md": {
-	id: "get-started-website-with-astro-tailwind-css.md";
-  slug: "get-started-website-with-astro-tailwind-css";
-  body: string;
-  collection: "post.1";
-  data: any
-} & { render(): Render[".md"] };
-"how-to-customize-astrowind-to-your-brand.md": {
-	id: "how-to-customize-astrowind-to-your-brand.md";
-  slug: "how-to-customize-astrowind-to-your-brand";
-  body: string;
-  collection: "post.1";
-  data: any
-} & { render(): Render[".md"] };
-"landing.md": {
-	id: "landing.md";
-  slug: "landing";
-  body: string;
-  collection: "post.1";
-  data: any
-} & { render(): Render[".md"] };
-"markdown-elements-demo-post.mdx": {
-	id: "markdown-elements-demo-post.mdx";
-  slug: "markdown-elements-demo-post";
-  body: string;
-  collection: "post.1";
-  data: any
-} & { render(): Render[".mdx"] };
-"useful-resources-to-create-websites.md": {
-	id: "useful-resources-to-create-websites.md";
-  slug: "useful-resources-to-create-websites";
-  body: string;
-  collection: "post.1";
-  data: any
-} & { render(): Render[".md"] };
 };
 
 	};

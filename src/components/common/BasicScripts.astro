@@ -89,7 +89,9 @@ import { UI } from 'astrowind:config';
           href = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
           break;
         case 'linkedin':
-          href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
+          href = `https://www.linkedin.com/feed/?linkOrigin=LI_BADGE&shareActive=true&text=${text}%20${url}`;
+
+          
           break;
         case 'whatsapp':
           href = `https://wa.me/?text=${text}%20${url}`;
