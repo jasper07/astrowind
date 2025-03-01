@@ -179,6 +179,13 @@ declare module 'astro:content' {
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
+"seven-reasons-sap-tech-failing.md": {
+	id: "seven-reasons-sap-tech-failing.md";
+  slug: "seven-reasons-sap-tech-failing";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
 };
 "post.1": {
 "astrowind-template-in-depth.mdx": {
