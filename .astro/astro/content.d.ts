@@ -151,6 +151,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"post": {
+"3-survival-patterns-cap-schema-changes.md": {
+	id: "3-survival-patterns-cap-schema-changes.md";
+  slug: "3-survival-patterns-cap-schema-changes";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
 "Learning Systems Thinking - Review.md": {
 	id: "Learning Systems Thinking - Review.md";
   slug: "learning-systems-thinking---review";
