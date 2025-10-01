@@ -14,7 +14,7 @@ tags:
 
 ## TL;DR / What You’ll Learn
 
-CAP gives you speed early because your CDS model is the source of truth, and everything just works. But when your app developments go into different teams, across landscapes, and get deployed with CTMS transport, that speed turns brittle fast. Git doesn’t protect you. Your schema can drift, be overwriten, or disappear in silence along with the data. This guide lays out three survival patterns to bring clarity, safety, and control back into the picture.
+CAP gives you speed early because your CDS model is the source of truth, and everything just works. But when your app developments go into different teams, across landscapes, and get deployed with a CTMS transport, that speed turns brittle fast. Git doesn’t protect you. Your schema can drift, be overwriten, or disappear in silence along with the data. This guide lays out three survival patterns to bring clarity, safety, and control back into the picture.
 ## The Trade-off: Speed vs. Reliability in CAP Schema Changes
 
 Early CAP development feels fast. You define your Core Data Services (CDS) model and run against an in-memory setup, SQLite, H2, or a local SAP HANA Cloud instance, and iterate freely. Ephemeral setups reset with every restart. File-based and HANA Cloud setups persist between runs and require resets when they drift. Testing is responsive. Schema resets are quick. Developers can focus entirely on application logic. This speed is a feature, not a flaw.
