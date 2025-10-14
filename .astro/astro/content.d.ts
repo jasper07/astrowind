@@ -165,6 +165,13 @@ declare module 'astro:content' {
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
+"Platform Engineering - Review.md": {
+	id: "Platform Engineering - Review.md";
+  slug: "platform-engineering---review";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
 "cap-developer-dashboard.md": {
 	id: "cap-developer-dashboard.md";
   slug: "cap-developer-dashboard";

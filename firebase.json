@@ -24,12 +24,9 @@
     ],
     "rewrites": [
       {
-				"source": "/submitContactForm",
-				"function": {
-					"functionId": "submitContactForm",
-					"pinTag": true
-				}
-			},
+        "source": "/submitContactForm",
+        "function": "submitContactForm"
+      },
       {
         "source": "**",
         "destination": "/index.html"

@@ -1,0 +1,20 @@
+POST https://secondphase.com.au/submitContactForm
+Content-Type: application/json
+
+{
+  "name": "John",
+  "email": "john@example.com",
+  "company": "Acme",
+  "message": "Hello"
+}
+
+#  2nd try
+POST https://us-central1-secondphase-b73a4.cloudfunctions.net/submitContactForm
+Content-Type: application/json
+
+{
+  "name": "John",
+  "email": "john@example.com",
+  "company": "Acme",
+  "message": "Hello"
+}

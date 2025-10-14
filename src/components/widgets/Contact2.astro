@@ -98,6 +98,13 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
                 class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 resize-none border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none"
               ></textarea>
             </div>
+            <input 
+              type="text" 
+              name="country" 
+              autocomplete="off" 
+              tabindex="-1" 
+              style="position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;"
+            />
             <div class="mb-0">
               <button
                 type="submit"
@@ -158,6 +165,13 @@ const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } 
       let allFilled = true;
 
       inputs.forEach((input) => {
+        if (input.name === 'country') {
+          if (input.value) {
+            allFilled = false;
+          }
+          return;
+        }
+        
         if (!input.value) {
           allFilled = false;
           input.classList.add('border-red-500');
