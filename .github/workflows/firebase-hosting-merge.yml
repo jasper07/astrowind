@@ -7,18 +7,18 @@ on:
     branches:
       - main
 jobs:
-  build_and_deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: npm install 
-      - run: npm install sharp
-      - run: npm install lightningcss
-      - run: npm run build
-      - run: cd functions && npm ci && cd ..
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SECONDPHASE_B73A4 }}
-          channelId: live
-          projectId: secondphase-b73a4
+  # build_and_deploy:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - run: npm install 
+  #     - run: npm install sharp
+  #     - run: npm install lightningcss
+  #     - run: npm run build
+  #     - run: cd functions && npm ci && cd ..
+  #     - uses: FirebaseExtended/action-hosting-deploy@v0
+  #       with:
+  #         repoToken: ${{ secrets.GITHUB_TOKEN }}
+  #         firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SECONDPHASE_B73A4 }}
+  #         channelId: live
+  #         projectId: secondphase-b73a4
