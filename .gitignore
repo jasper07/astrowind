@@ -30,3 +30,6 @@ functions/firebase-debug.log
 *.env
 firebase-debug.log
 keys/*.json
+
+
+functions/keys"functions/keys/*.json" 
