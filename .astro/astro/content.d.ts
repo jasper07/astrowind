@@ -172,6 +172,13 @@ declare module 'astro:content' {
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
+"Think-Distributed-Systems-Review.md": {
+	id: "Think-Distributed-Systems-Review.md";
+  slug: "think-distributed-systems-review";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
 "cap-developer-dashboard.md": {
 	id: "cap-developer-dashboard.md";
   slug: "cap-developer-dashboard";

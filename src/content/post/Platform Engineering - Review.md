@@ -54,6 +54,8 @@ For non-KTLO work, the 70/20/10 model is offered. Seventy percent is for core in
 - Celebrate victories publicly to build momentum and buy-in
 ## Conclusion
 
-This book offers framing, not recipes. It defends platform engineering as a discipline and challenges hype, simplification, and unjustified rebuilds.
+This book offers framing, not recipes. It defends Platform Engineering as a rigorous strategic function and challenges hype, simplification, and unjustified rebuilds.
+
+The authors mandate deliberate stakeholder coordination through Proposal Documents, Wins and Challenges reports, and regular one-on-ones with engineering teams.
 
 If your challenge is the platform itself, with sprawl, uneven adoption, or unclear value, this book is worth reading.
