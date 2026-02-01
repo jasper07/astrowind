@@ -32,4 +32,5 @@ firebase-debug.log
 keys/*.json
 
 
-functions/keys"functions/keys/*.json" 
+functions/keys
+functions/keys/*.json" 
